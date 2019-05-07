@@ -44,13 +44,13 @@ Features include:
 Install this package using the following commands:
 
 ```shell
-npm install @iota/client-load-balancer
+npm install iotaledger/client-load-balancer
 ```
 
 or
 
 ```shell
-yarn add @iota/client-load-balancer
+yarn add iotaledger/client-load-balancer
 ```
 
 ## Example Usage
