@@ -1,0 +1,90 @@
+{
+    "name": "@iota/client-load-balancer",
+    "description": "IOTA JavaScript Client Load Balancer",
+    "version": "0.1.0",
+    "keywords": [
+        "iota",
+        "client",
+        "load",
+        "balancer"
+    ],
+    "authors": [
+        "Martyn Janes <martyn.janes@iota.org>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/iotaledger/iota-client-load-balancer.git"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@iota/core": "^1.0.0-beta.12",
+        "@iota/mam": "github:iotaledger/mam.client.js",
+        "@iota/validators": "^1.0.0-beta.12",
+        "bluebird": "^3.5.4"
+    },
+    "scripts": {
+        "build-clean": "rimraf ./es/*",
+        "build-lint": "tslint --project ./tsconfig.json",
+        "build-compile": "tsc",
+        "build-watch": "tsc --watch",
+        "build": "run-s build-clean build-lint build-compile",
+        "test": "jest",
+        "umd": "rollup --config rollup.config.js",
+        "umd-min": "rollup --config rollup.config.js --environment MINIFY:true",
+        "dist-clean": "rimraf ./dist/* ./typings/*",
+        "typings": "tsc --emitDeclarationOnly --declaration true --declarationDir typings",
+        "docs": "typedoc -out docs --theme markdown -mdEngine github  --mdHideSources --readme none --excludePrivate --mode file --exclude ./src/index.ts,./src/internals.ts",
+        "dist": "run-s dist-clean build test umd umd-min typings docs"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "devDependencies": {
+        "@types/bluebird": "^3.5.26",
+        "@types/jest": "^24.0.9",
+        "@types/node": "^12.0.0",
+        "cross-env": "^5.2.0",
+        "jest": "^24.8.0",
+        "jsdoc-to-markdown": "^4.0.1",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^2.6.3",
+        "rollup": "^1.11.3",
+        "rollup-plugin-commonjs": "^9.2.1",
+        "rollup-plugin-node-resolve": "^4.0.1",
+        "rollup-plugin-terser": "^4.0.4",
+        "rollup-plugin-typescript": "^1.0.0",
+        "rollup-plugin-uglify": "^6.0.2",
+        "ts-jest": "^24.0.0",
+        "ts-node": "^8.0.2",
+        "tslint": "^5.13.1",
+        "tslint-eslint-rules": "^5.4.0",
+        "tslint-microsoft-contrib": "^6.0.0",
+        "typedoc": "^0.14.2",
+        "typedoc-plugin-markdown": "^1.2.0",
+        "typescript": "^3.3.3333"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.ts?$": "ts-jest"
+        },
+        "testRegex": "./test/.*.spec.ts$",
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ],
+        "collectCoverage": true
+    },
+    "main": "dist/iota-client-load-balancer.js",
+    "module": "es/index.js",
+    "typings": "typings/index.d.ts",
+    "files": [
+        "dist",
+        "lib",
+        "es",
+        "src",
+        "typings"
+    ]
+}
