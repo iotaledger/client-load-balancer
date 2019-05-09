@@ -1,5 +1,9 @@
 # Changelog
 
-## v0.0.1
+## v0.1.1
+
+* Fix - wrapMethodCallbackOrAsync now uses param for wrapping mwm and depth instead of relying on method name as minification breaks other method
+
+## v0.1.0
 
 * Initial Release

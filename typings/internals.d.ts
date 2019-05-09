@@ -17,7 +17,8 @@ export declare function loadBalancer(settings: LoadBalancerSettings, updateProvi
  * @param settings The load balancer settings.
  * @param api The composed api.
  * @param method The method to wrap.
+ * @param hasDepthMwm The methods has depth or mwm parameters we can update.
  * @returns The wrapped method.
  * @private
  */
-export declare function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: API, method: (...params: any) => Bluebird<any>): () => any;
+export declare function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: API, method: (...params: any) => Bluebird<any>, hasDepthMwm?: boolean): () => any;

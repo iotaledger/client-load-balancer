@@ -188,10 +188,11 @@
      * @param settings The load balancer settings.
      * @param api The composed api.
      * @param method The method to wrap.
+     * @param hasDepthMwm The methods has depth or mwm parameters we can update.
      * @returns The wrapped method.
      * @private
      */
-    function wrapMethodCallbackOrAsync(settings, api, method) {
+    function wrapMethodCallbackOrAsync(settings, api, method, hasDepthMwm) {
         var _this = this;
         return function () {
             var p = [];
@@ -209,9 +210,7 @@
                     }
                     return [2 /*return*/, loadBalancer(settings, function (node) { return api.setSettings({ provider: node.provider, attachToTangle: node.attachToTangle || settings.attachToTangle }); }, function (node) {
                             // Apply the default depth and mwm to methods that use them if they have not been supplied
-                            if (method.name === "sendTrytes" ||
-                                method.name === "promoteTransaction" ||
-                                method.name === "replayBundle") {
+                            if (hasDepthMwm) {
                                 p[1] = p[1] || node.depth || settings.depth;
                                 p[2] = p[2] || node.mwm || settings.mwm;
                             }
@@ -295,9 +294,9 @@
         api.isPromotable = wrapMethodCallbackOrAsync(settings, api, api.isPromotable);
         api.isReattachable = wrapMethodCallbackOrAsync(settings, api, api.isReattachable);
         api.prepareTransfers = wrapMethodCallbackOrAsync(settings, api, api.prepareTransfers);
-        api.promoteTransaction = wrapMethodCallbackOrAsync(settings, api, api.promoteTransaction);
-        api.replayBundle = wrapMethodCallbackOrAsync(settings, api, api.replayBundle);
-        api.sendTrytes = wrapMethodCallbackOrAsync(settings, api, api.sendTrytes);
+        api.promoteTransaction = wrapMethodCallbackOrAsync(settings, api, api.promoteTransaction, true);
+        api.replayBundle = wrapMethodCallbackOrAsync(settings, api, api.replayBundle, true);
+        api.sendTrytes = wrapMethodCallbackOrAsync(settings, api, api.sendTrytes, true);
         api.storeAndBroadcast = wrapMethodCallbackOrAsync(settings, api, api.storeAndBroadcast);
         api.traverseBundle = wrapMethodCallbackOrAsync(settings, api, api.traverseBundle);
         return api;

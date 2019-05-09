@@ -93,10 +93,11 @@ export async function loadBalancer(
  * @param settings The load balancer settings.
  * @param api The composed api.
  * @param method The method to wrap.
+ * @param hasDepthMwm The methods has depth or mwm parameters we can update.
  * @returns The wrapped method.
  * @private
  */
-export function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: API, method: (...params: any) => Bluebird<any>): () => any {
+export function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: API, method: (...params: any) => Bluebird<any>, hasDepthMwm?: boolean): () => any {
     return async (...p: any) => {
         const originalCallbackParam = p[method.length - 1];
 
@@ -111,9 +112,7 @@ export function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: A
             (node) => api.setSettings({ provider: node.provider, attachToTangle: node.attachToTangle || settings.attachToTangle }),
             (node) => {
                 // Apply the default depth and mwm to methods that use them if they have not been supplied
-                if (method.name === "sendTrytes" ||
-                    method.name === "promoteTransaction" ||
-                    method.name === "replayBundle") {
+                if (hasDepthMwm) {
                     p[1] = p[1] || node.depth || settings.depth;
                     p[2] = p[2] || node.mwm || settings.mwm;
                 }

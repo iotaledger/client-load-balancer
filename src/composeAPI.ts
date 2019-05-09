@@ -51,9 +51,9 @@ export function composeAPI(settings: LoadBalancerSettings): API {
     api.isPromotable = wrapMethodCallbackOrAsync(settings, api, api.isPromotable);
     api.isReattachable = wrapMethodCallbackOrAsync(settings, api, api.isReattachable);
     api.prepareTransfers = wrapMethodCallbackOrAsync(settings, api, api.prepareTransfers);
-    api.promoteTransaction = wrapMethodCallbackOrAsync(settings, api, api.promoteTransaction);
-    api.replayBundle = wrapMethodCallbackOrAsync(settings, api, api.replayBundle);
-    api.sendTrytes = wrapMethodCallbackOrAsync(settings, api, api.sendTrytes);
+    api.promoteTransaction = wrapMethodCallbackOrAsync(settings, api, api.promoteTransaction, true);
+    api.replayBundle = wrapMethodCallbackOrAsync(settings, api, api.replayBundle, true);
+    api.sendTrytes = wrapMethodCallbackOrAsync(settings, api, api.sendTrytes, true);
     api.storeAndBroadcast = wrapMethodCallbackOrAsync(settings, api, api.storeAndBroadcast);
     api.traverseBundle = wrapMethodCallbackOrAsync(settings, api, api.traverseBundle);
 
