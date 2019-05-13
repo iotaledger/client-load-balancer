@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.2
+
+* Fix - wrapMethodCallbackOrAsync updated to use methodsName for getTrytes check
+
 ## v0.1.1
 
 * Fix - wrapMethodCallbackOrAsync now uses param for wrapping mwm and depth instead of relying on method name as minification breaks other method

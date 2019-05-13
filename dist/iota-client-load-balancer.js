@@ -188,11 +188,11 @@
      * @param settings The load balancer settings.
      * @param api The composed api.
      * @param method The method to wrap.
-     * @param hasDepthMwm The methods has depth or mwm parameters we can update.
+     * @param methodName The name of the method.
      * @returns The wrapped method.
      * @private
      */
-    function wrapMethodCallbackOrAsync(settings, api, method, hasDepthMwm) {
+    function wrapMethodCallbackOrAsync(settings, api, method, methodName) {
         var _this = this;
         return function () {
             var p = [];
@@ -210,13 +210,15 @@
                     }
                     return [2 /*return*/, loadBalancer(settings, function (node) { return api.setSettings({ provider: node.provider, attachToTangle: node.attachToTangle || settings.attachToTangle }); }, function (node) {
                             // Apply the default depth and mwm to methods that use them if they have not been supplied
-                            if (hasDepthMwm) {
+                            if (methodName === "promoteTransaction" ||
+                                methodName === "replayBundle" ||
+                                methodName === "sendTrytes") {
                                 p[1] = p[1] || node.depth || settings.depth;
                                 p[2] = p[2] || node.mwm || settings.mwm;
                             }
                             return method.apply(void 0, p);
                         }, function (res) {
-                            if (settings.snapshotAware && method.name === "getTrytes") {
+                            if (settings.snapshotAware && methodName === "getTrytes") {
                                 var trytes = res;
                                 if (trytes) {
                                     for (var i = 0; i < trytes.length; i++) {
@@ -267,38 +269,38 @@
         settings.failMode = settings.failMode || exports.FailMode.all;
         var api = core.composeAPI({});
         // Wrap all the web methods with additional handling
-        api.addNeighbors = wrapMethodCallbackOrAsync(settings, api, api.addNeighbors);
-        api.broadcastTransactions = wrapMethodCallbackOrAsync(settings, api, api.broadcastTransactions);
-        api.checkConsistency = wrapMethodCallbackOrAsync(settings, api, api.checkConsistency);
-        api.findTransactions = wrapMethodCallbackOrAsync(settings, api, api.findTransactions);
-        api.getBalances = wrapMethodCallbackOrAsync(settings, api, api.getBalances);
-        api.getInclusionStates = wrapMethodCallbackOrAsync(settings, api, api.getInclusionStates);
-        api.getNeighbors = wrapMethodCallbackOrAsync(settings, api, api.getNeighbors);
-        api.getNodeInfo = wrapMethodCallbackOrAsync(settings, api, api.getNodeInfo);
-        api.getTips = wrapMethodCallbackOrAsync(settings, api, api.getTips);
-        api.getTransactionsToApprove = wrapMethodCallbackOrAsync(settings, api, api.getTransactionsToApprove);
-        api.getTrytes = wrapMethodCallbackOrAsync(settings, api, api.getTrytes);
-        api.interruptAttachingToTangle = wrapMethodCallbackOrAsync(settings, api, api.interruptAttachingToTangle);
-        api.removeNeighbors = wrapMethodCallbackOrAsync(settings, api, api.removeNeighbors);
-        api.storeTransactions = wrapMethodCallbackOrAsync(settings, api, api.storeTransactions);
-        api.broadcastBundle = wrapMethodCallbackOrAsync(settings, api, api.broadcastBundle);
-        api.getAccountData = wrapMethodCallbackOrAsync(settings, api, api.getAccountData);
-        api.getBundle = wrapMethodCallbackOrAsync(settings, api, api.getBundle);
-        api.getBundlesFromAddresses = wrapMethodCallbackOrAsync(settings, api, api.getBundlesFromAddresses);
-        api.getLatestInclusion = wrapMethodCallbackOrAsync(settings, api, api.getLatestInclusion);
-        api.getNewAddress = wrapMethodCallbackOrAsync(settings, api, api.getNewAddress);
-        api.getTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.getTransactionObjects);
-        api.findTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.findTransactionObjects);
-        api.getInputs = wrapMethodCallbackOrAsync(settings, api, api.getInputs);
-        api.getTransfers = wrapMethodCallbackOrAsync(settings, api, api.getTransfers);
-        api.isPromotable = wrapMethodCallbackOrAsync(settings, api, api.isPromotable);
-        api.isReattachable = wrapMethodCallbackOrAsync(settings, api, api.isReattachable);
-        api.prepareTransfers = wrapMethodCallbackOrAsync(settings, api, api.prepareTransfers);
-        api.promoteTransaction = wrapMethodCallbackOrAsync(settings, api, api.promoteTransaction, true);
-        api.replayBundle = wrapMethodCallbackOrAsync(settings, api, api.replayBundle, true);
-        api.sendTrytes = wrapMethodCallbackOrAsync(settings, api, api.sendTrytes, true);
-        api.storeAndBroadcast = wrapMethodCallbackOrAsync(settings, api, api.storeAndBroadcast);
-        api.traverseBundle = wrapMethodCallbackOrAsync(settings, api, api.traverseBundle);
+        api.addNeighbors = wrapMethodCallbackOrAsync(settings, api, api.addNeighbors, "addNeighbors");
+        api.broadcastTransactions = wrapMethodCallbackOrAsync(settings, api, api.broadcastTransactions, "broadcastTransactions");
+        api.checkConsistency = wrapMethodCallbackOrAsync(settings, api, api.checkConsistency, "checkConsistency");
+        api.findTransactions = wrapMethodCallbackOrAsync(settings, api, api.findTransactions, "findTransactions");
+        api.getBalances = wrapMethodCallbackOrAsync(settings, api, api.getBalances, "getBalances");
+        api.getInclusionStates = wrapMethodCallbackOrAsync(settings, api, api.getInclusionStates, "getInclusionStates");
+        api.getNeighbors = wrapMethodCallbackOrAsync(settings, api, api.getNeighbors, "getNeighbors");
+        api.getNodeInfo = wrapMethodCallbackOrAsync(settings, api, api.getNodeInfo, "getNodeInfo");
+        api.getTips = wrapMethodCallbackOrAsync(settings, api, api.getTips, "getTips");
+        api.getTransactionsToApprove = wrapMethodCallbackOrAsync(settings, api, api.getTransactionsToApprove, "getTransactionsToApprove");
+        api.getTrytes = wrapMethodCallbackOrAsync(settings, api, api.getTrytes, "getTrytes");
+        api.interruptAttachingToTangle = wrapMethodCallbackOrAsync(settings, api, api.interruptAttachingToTangle, "interruptAttachingToTangle");
+        api.removeNeighbors = wrapMethodCallbackOrAsync(settings, api, api.removeNeighbors, "removeNeighbors");
+        api.storeTransactions = wrapMethodCallbackOrAsync(settings, api, api.storeTransactions, "storeTransactions");
+        api.broadcastBundle = wrapMethodCallbackOrAsync(settings, api, api.broadcastBundle, "broadcastBundle");
+        api.getAccountData = wrapMethodCallbackOrAsync(settings, api, api.getAccountData, "getAccountData");
+        api.getBundle = wrapMethodCallbackOrAsync(settings, api, api.getBundle, "getBundle");
+        api.getBundlesFromAddresses = wrapMethodCallbackOrAsync(settings, api, api.getBundlesFromAddresses, "getBundlesFromAddresses");
+        api.getLatestInclusion = wrapMethodCallbackOrAsync(settings, api, api.getLatestInclusion, "getLatestInclusion");
+        api.getNewAddress = wrapMethodCallbackOrAsync(settings, api, api.getNewAddress, "getNewAddress");
+        api.getTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.getTransactionObjects, "getTransactionObjects");
+        api.findTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.findTransactionObjects, "findTransactionObjects");
+        api.getInputs = wrapMethodCallbackOrAsync(settings, api, api.getInputs, "getInputs");
+        api.getTransfers = wrapMethodCallbackOrAsync(settings, api, api.getTransfers, "getTransfers");
+        api.isPromotable = wrapMethodCallbackOrAsync(settings, api, api.isPromotable, "isPromotable");
+        api.isReattachable = wrapMethodCallbackOrAsync(settings, api, api.isReattachable, "isReattachable");
+        api.prepareTransfers = wrapMethodCallbackOrAsync(settings, api, api.prepareTransfers, "prepareTransfers");
+        api.promoteTransaction = wrapMethodCallbackOrAsync(settings, api, api.promoteTransaction, "promoteTransaction");
+        api.replayBundle = wrapMethodCallbackOrAsync(settings, api, api.replayBundle, "replayBundle");
+        api.sendTrytes = wrapMethodCallbackOrAsync(settings, api, api.sendTrytes, "sendTrytes");
+        api.storeAndBroadcast = wrapMethodCallbackOrAsync(settings, api, api.storeAndBroadcast, "storeAndBroadcast");
+        api.traverseBundle = wrapMethodCallbackOrAsync(settings, api, api.traverseBundle, "traverseBundle");
         return api;
     }
 

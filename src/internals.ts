@@ -93,11 +93,11 @@ export async function loadBalancer(
  * @param settings The load balancer settings.
  * @param api The composed api.
  * @param method The method to wrap.
- * @param hasDepthMwm The methods has depth or mwm parameters we can update.
+ * @param methodName The name of the method.
  * @returns The wrapped method.
  * @private
  */
-export function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: API, method: (...params: any) => Bluebird<any>, hasDepthMwm?: boolean): () => any {
+export function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: API, method: (...params: any) => Bluebird<any>, methodName: string): () => any {
     return async (...p: any) => {
         const originalCallbackParam = p[method.length - 1];
 
@@ -112,14 +112,16 @@ export function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: A
             (node) => api.setSettings({ provider: node.provider, attachToTangle: node.attachToTangle || settings.attachToTangle }),
             (node) => {
                 // Apply the default depth and mwm to methods that use them if they have not been supplied
-                if (hasDepthMwm) {
+                if (methodName === "promoteTransaction" ||
+                    methodName === "replayBundle" ||
+                    methodName === "sendTrytes") {
                     p[1] = p[1] || node.depth || settings.depth;
                     p[2] = p[2] || node.mwm || settings.mwm;
                 }
                 return method(...p);
             },
             (res) => {
-                if (settings.snapshotAware && method.name === "getTrytes") {
+                if (settings.snapshotAware && methodName === "getTrytes") {
                     const trytes: ReadonlyArray<string> = <ReadonlyArray<string>>res;
                     if (trytes) {
                         for (let i = 0; i < trytes.length; i++) {
