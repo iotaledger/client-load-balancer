@@ -162,7 +162,7 @@
                         }
                         else if (settings.failMode === exports.FailMode.all) {
                             // Fail mode is try all until one succeeds
-                            errorList.push(err_1);
+                            errorList.push(err_1.message ? err_1 : { message: err_1 });
                             // Try to use the next node if the current one errored
                             triedCount++;
                             // But only if we have not already tried all the nodes

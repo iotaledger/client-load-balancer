@@ -67,7 +67,7 @@ export async function loadBalancer(
                 throw err;
             } else if (settings.failMode === FailMode.all) {
                 // Fail mode is try all until one succeeds
-                errorList.push(err);
+                errorList.push(err.message ? err : { message: err});
 
                 // Try to use the next node if the current one errored
                 triedCount++;
