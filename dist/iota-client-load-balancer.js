@@ -354,11 +354,12 @@
          * Add a subscription to your state object
          * @param state The state object to add the subscription to.
          * @param channelRoot The root of the channel to subscribe to.
+         * @param channelMode Can be `public`, `private` or `restricted`.
          * @param channelKey Optional, the key of the channel to subscribe to.
          * @returns Updated state object to be used with future actions.
          */
-        Mam.subscribe = function (state, channelRoot, channelKey) {
-            return MamCore.subscribe(state, channelRoot, channelKey);
+        Mam.subscribe = function (state, channelRoot, channelMode, channelKey) {
+            return MamCore.subscribe(state, channelRoot, channelMode, channelKey);
         };
         /**
          * Listen for new message on the channel.
@@ -398,35 +399,15 @@
          */
         Mam.fetch = function (root, mode, sideKey, callback, limit) {
             return __awaiter(this, void 0, Promise, function () {
-                var _this = this;
                 return __generator(this, function (_a) {
                     return [2 /*return*/, loadBalancer(Mam.loadBalancerSettings, function (node) {
                             MamCore.setIOTA(node.provider);
                             MamCore.setAttachToTangle(node.attachToTangle || Mam.loadBalancerSettings.attachToTangle);
-                        }, function (node) { return new Bluebird(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                            var res, err_1;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        _a.trys.push([0, 2, , 3]);
-                                        return [4 /*yield*/, MamCore.fetch(root, mode, sideKey, callback, limit)];
-                                    case 1:
-                                        res = _a.sent();
-                                        if (res instanceof Error) {
-                                            reject(res);
-                                        }
-                                        else {
-                                            resolve(res);
-                                        }
-                                        return [3 /*break*/, 3];
-                                    case 2:
-                                        err_1 = _a.sent();
-                                        reject(err_1);
-                                        return [3 /*break*/, 3];
-                                    case 3: return [2 /*return*/];
-                                }
-                            });
-                        }); }); })];
+                        }, function () { return new Bluebird(function (resolve, reject) {
+                            MamCore.fetch(root, mode, sideKey, callback, limit)
+                                .then(resolve)
+                                .catch(reject);
+                        }); })];
                 });
             });
         };

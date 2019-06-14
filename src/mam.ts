@@ -62,11 +62,12 @@ export class Mam {
      * Add a subscription to your state object
      * @param state The state object to add the subscription to.
      * @param channelRoot The root of the channel to subscribe to.
+     * @param channelMode Can be `public`, `private` or `restricted`.
      * @param channelKey Optional, the key of the channel to subscribe to.
      * @returns Updated state object to be used with future actions.
      */
-    public static subscribe(state: MamCore.MamState, channelRoot: string, channelKey?: string): MamCore.MamState {
-        return MamCore.subscribe(state, channelRoot, channelKey);
+    public static subscribe(state: MamCore.MamState, channelRoot: string, channelMode: MamCore.MamMode, channelKey?: string): MamCore.MamState {
+        return MamCore.subscribe(state, channelRoot, channelMode, channelKey);
     }
 
     /**
@@ -124,17 +125,10 @@ export class Mam {
                 MamCore.setIOTA(node.provider);
                 MamCore.setAttachToTangle(node.attachToTangle || Mam.loadBalancerSettings.attachToTangle);
             },
-            (node) => new Bluebird<any>(async (resolve, reject) => {
-                try {
-                    const res = await MamCore.fetch(root, mode, sideKey, callback, limit);
-                    if (res instanceof Error) {
-                        reject(res);
-                    } else {
-                        resolve(res);
-                    }
-                } catch (err) {
-                    reject(err);
-                }
+            () => new Bluebird<any>((resolve, reject) => {
+                MamCore.fetch(root, mode, sideKey, callback, limit)
+                    .then(resolve)
+                    .catch(reject);
             }));
     }
 

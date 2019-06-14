@@ -35,10 +35,11 @@ export declare class Mam {
      * Add a subscription to your state object
      * @param state The state object to add the subscription to.
      * @param channelRoot The root of the channel to subscribe to.
+     * @param channelMode Can be `public`, `private` or `restricted`.
      * @param channelKey Optional, the key of the channel to subscribe to.
      * @returns Updated state object to be used with future actions.
      */
-    static subscribe(state: MamCore.MamState, channelRoot: string, channelKey?: string): MamCore.MamState;
+    static subscribe(state: MamCore.MamState, channelRoot: string, channelMode: MamCore.MamMode, channelKey?: string): MamCore.MamState;
     /**
      * Listen for new message on the channel.
      * @param channel The channel to listen on.

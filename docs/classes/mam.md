@@ -210,7 +210,7 @@ ___
 
 ### `<Static>` subscribe
 
-▸ **subscribe**(state: *`MamState`*, channelRoot: *`string`*, channelKey?: *`undefined` \| `string`*): `MamState`
+▸ **subscribe**(state: *`MamState`*, channelRoot: *`string`*, channelMode: *`MamCore.MamMode`*, channelKey?: *`undefined` \| `string`*): `MamState`
 
 Add a subscription to your state object
 
@@ -220,6 +220,7 @@ Add a subscription to your state object
 | ------ | ------ | ------ |
 | state | `MamState` |  The state object to add the subscription to. |
 | channelRoot | `string` |  The root of the channel to subscribe to. |
+| channelMode | `MamCore.MamMode` |  Can be \`public\`, \`private\` or \`restricted\`. |
 | `Optional` channelKey | `undefined` \| `string` |  Optional, the key of the channel to subscribe to. |
 
 **Returns:** `MamState`
