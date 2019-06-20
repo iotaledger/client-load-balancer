@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.4
+
+* Pass attachToTangle into composeAPICore
+
 ## v0.1.3
 
 * Fix - mam wrapping improved for fetch

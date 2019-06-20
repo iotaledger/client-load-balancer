@@ -21,7 +21,7 @@ export function composeAPI(settings: LoadBalancerSettings): API {
     settings.successMode = settings.successMode || SuccessMode.next;
     settings.failMode = settings.failMode || FailMode.all;
 
-    const api = composeAPICore({});
+    const api = composeAPICore({ attachToTangle: settings.attachToTangle });
 
     // Wrap all the web methods with additional handling
     api.addNeighbors = wrapMethodCallbackOrAsync(settings, api, api.addNeighbors, "addNeighbors");

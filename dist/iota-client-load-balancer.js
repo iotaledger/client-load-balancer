@@ -267,7 +267,7 @@
         settings.depth = settings.depth || 3;
         settings.successMode = settings.successMode || exports.SuccessMode.next;
         settings.failMode = settings.failMode || exports.FailMode.all;
-        var api = core.composeAPI({});
+        var api = core.composeAPI({ attachToTangle: settings.attachToTangle });
         // Wrap all the web methods with additional handling
         api.addNeighbors = wrapMethodCallbackOrAsync(settings, api, api.addNeighbors, "addNeighbors");
         api.broadcastTransactions = wrapMethodCallbackOrAsync(settings, api, api.broadcastTransactions, "broadcastTransactions");
