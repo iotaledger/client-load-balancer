@@ -1,4 +1,6 @@
-[@iota/client-load-balancer](../README.md) > [LoadBalancerSettings](../classes/loadbalancersettings.md)
+> ## [@iota/client-load-balancer](../README.md)
+
+[LoadBalancerSettings](loadbalancersettings.md) /
 
 # Class: LoadBalancerSettings
 
@@ -6,98 +8,87 @@ Settings to use for the load balancer.
 
 ## Hierarchy
 
-**LoadBalancerSettings**
+* **LoadBalancerSettings**
 
-## Index
+### Index
 
-### Properties
+#### Properties
 
-* [attachToTangle](loadbalancersettings.md#attachtotangle)
-* [depth](loadbalancersettings.md#depth)
-* [failMode](loadbalancersettings.md#failmode)
-* [mwm](loadbalancersettings.md#mwm)
+* [attachToTangle](loadbalancersettings.md#optional-attachtotangle)
+* [depth](loadbalancersettings.md#optional-depth)
+* [failMode](loadbalancersettings.md#optional-failmode)
+* [mwm](loadbalancersettings.md#optional-mwm)
 * [nodeWalkStrategy](loadbalancersettings.md#nodewalkstrategy)
-* [snapshotAware](loadbalancersettings.md#snapshotaware)
-* [successMode](loadbalancersettings.md#successmode)
-* [timeoutMs](loadbalancersettings.md#timeoutms)
+* [snapshotAware](loadbalancersettings.md#optional-snapshotaware)
+* [successMode](loadbalancersettings.md#optional-successmode)
+* [timeoutMs](loadbalancersettings.md#optional-timeoutms)
 
-### Methods
+#### Methods
 
-* [failNodeCallback](loadbalancersettings.md#failnodecallback)
-* [tryNodeCallback](loadbalancersettings.md#trynodecallback)
-
----
+* [failNodeCallback](loadbalancersettings.md#optional-failnodecallback)
+* [tryNodeCallback](loadbalancersettings.md#optional-trynodecallback)
 
 ## Properties
 
-<a id="attachtotangle"></a>
+### `Optional` attachToTangle
 
-### `<Optional>` attachToTangle
-
-**● attachToTangle**: *`AttachToTangle`*
+● **attachToTangle**? : *`AttachToTangle`*
 
 The attach to tangle method.
 
 ___
-<a id="depth"></a>
 
-### `<Optional>` depth
+### `Optional` depth
 
-**● depth**: *`undefined` \| `number`*
+● **depth**? : *undefined | number*
 
 The depth used for attaching, defaults to 3.
 
 ___
-<a id="failmode"></a>
 
-### `<Optional>` failMode
+### `Optional` failMode
 
-**● failMode**: *[FailMode](../enums/failmode.md)*
+● **failMode**? : *[FailMode](../enums/failmode.md)*
 
 How should we use the nodes on a failed request, defaults to all.
 
 ___
-<a id="mwm"></a>
 
-### `<Optional>` mwm
+### `Optional` mwm
 
-**● mwm**: *`undefined` \| `number`*
+● **mwm**? : *undefined | number*
 
 The minimum weight magnitude used for attaching, defaults to 9.
 
 ___
-<a id="nodewalkstrategy"></a>
 
 ###  nodeWalkStrategy
 
-**● nodeWalkStrategy**: *[NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
+● **nodeWalkStrategy**: *[NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
 
 The strategy to use for node selection.
 
 ___
-<a id="snapshotaware"></a>
 
-### `<Optional>` snapshotAware
+### `Optional` snapshotAware
 
-**● snapshotAware**: *`undefined` \| `false` \| `true`*
+● **snapshotAware**? : *undefined | false | true*
 
 Should be look for missing data from snapshots.
 
 ___
-<a id="successmode"></a>
 
-### `<Optional>` successMode
+### `Optional` successMode
 
-**● successMode**: *[SuccessMode](../enums/successmode.md)*
+● **successMode**? : *[SuccessMode](../enums/successmode.md)*
 
 How should we use the nodes on a successful request, defaults to next.
 
 ___
-<a id="timeoutms"></a>
 
-### `<Optional>` timeoutMs
+### `Optional` timeoutMs
 
-**● timeoutMs**: *`undefined` \| `number`*
+● **timeoutMs**? : *undefined | number*
 
 A timeout to check if a node is non responsive, if not supplied will use default fetch timout.
 
@@ -105,39 +96,35 @@ ___
 
 ## Methods
 
-<a id="failnodecallback"></a>
+### `Optional` failNodeCallback
 
-### `<Optional>` failNodeCallback
-
-▸ **failNodeCallback**(node: *[NodeConfiguration](nodeconfiguration.md)*, error: *`Error`*): `void`
+▸ **failNodeCallback**(`node`: [NodeConfiguration](nodeconfiguration.md), `error`: `Error`): *void*
 
 Callback which is triggered when a node fails.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| node | [NodeConfiguration](nodeconfiguration.md) |  The node configuration that failed. |
-| error | `Error` |  The error the node failed with. |
+Name | Type | Description |
+------ | ------ | ------ |
+`node` | [NodeConfiguration](nodeconfiguration.md) | The node configuration that failed. |
+`error` | `Error` | The error the node failed with.  |
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="trynodecallback"></a>
 
-### `<Optional>` tryNodeCallback
+### `Optional` tryNodeCallback
 
-▸ **tryNodeCallback**(node: *[NodeConfiguration](nodeconfiguration.md)*): `void`
+▸ **tryNodeCallback**(`node`: [NodeConfiguration](nodeconfiguration.md)): *void*
 
 Callback which is triggered when a new node is about to be used.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| node | [NodeConfiguration](nodeconfiguration.md) |  The node configuration that was tried. |
+Name | Type | Description |
+------ | ------ | ------ |
+`node` | [NodeConfiguration](nodeconfiguration.md) | The node configuration that was tried.  |
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-

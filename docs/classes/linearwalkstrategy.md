@@ -1,4 +1,6 @@
-[@iota/client-load-balancer](../README.md) > [LinearWalkStrategy](../classes/linearwalkstrategy.md)
+> ## [@iota/client-load-balancer](../README.md)
+
+[LinearWalkStrategy](linearwalkstrategy.md) /
 
 # Class: LinearWalkStrategy
 
@@ -6,109 +8,121 @@ Node choice strategy which just iterates through the list of nodes.
 
 ## Hierarchy
 
- [BaseWalkStrategy](basewalkstrategy.md)
+* [BaseWalkStrategy](basewalkstrategy.md)
 
-**↳ LinearWalkStrategy**
+  * **LinearWalkStrategy**
 
 ## Implements
 
 * [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)
 
-## Index
+### Index
 
-### Constructors
+#### Constructors
 
 * [constructor](linearwalkstrategy.md#constructor)
 
-### Methods
+#### Methods
 
 * [blacklist](linearwalkstrategy.md#blacklist)
 * [current](linearwalkstrategy.md#current)
-* [getUsableNodes](linearwalkstrategy.md#getusablenodes)
+* [getUsableNodes](linearwalkstrategy.md#protected-getusablenodes)
 * [next](linearwalkstrategy.md#next)
 * [totalUsable](linearwalkstrategy.md#totalusable)
 
----
-
 ## Constructors
-
-<a id="constructor"></a>
 
 ###  constructor
 
-⊕ **new LinearWalkStrategy**(nodes: *[NodeConfiguration](nodeconfiguration.md)[]*, blacklistLimit?: *`undefined` \| `number`*): [LinearWalkStrategy](linearwalkstrategy.md)
+\+ **new LinearWalkStrategy**(`nodes`: [NodeConfiguration](nodeconfiguration.md)[], `blacklistLimit?`: undefined | number): *[LinearWalkStrategy](linearwalkstrategy.md)*
+
+*Overrides [BaseWalkStrategy](basewalkstrategy.md).[constructor](basewalkstrategy.md#constructor)*
 
 Create a new instance of LinearWalkStrategy.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| nodes | [NodeConfiguration](nodeconfiguration.md)[] |  The nodes to randomly pick from. |
-| `Optional` blacklistLimit | `undefined` \| `number` |  The number of failures before a node is blacklisted. |
+Name | Type | Description |
+------ | ------ | ------ |
+`nodes` | [NodeConfiguration](nodeconfiguration.md)[] | The nodes to randomly pick from. |
+`blacklistLimit?` | undefined \| number | The number of failures before a node is blacklisted.  |
 
-**Returns:** [LinearWalkStrategy](linearwalkstrategy.md)
+**Returns:** *[LinearWalkStrategy](linearwalkstrategy.md)*
 
 ___
 
 ## Methods
 
-<a id="blacklist"></a>
-
 ###  blacklist
 
-▸ **blacklist**(): `void`
+▸ **blacklist**(): *void*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
+
+*Inherited from [BaseWalkStrategy](basewalkstrategy.md).[blacklist](basewalkstrategy.md#blacklist)*
 
 Blacklist the current node, so it doesn't get used again once limit is reached.
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="current"></a>
 
 ###  current
 
-▸ **current**(): [NodeConfiguration](nodeconfiguration.md)
+▸ **current**(): *[NodeConfiguration](nodeconfiguration.md)*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
+
+*Overrides [BaseWalkStrategy](basewalkstrategy.md).[current](basewalkstrategy.md#abstract-current)*
 
 Get the current node from the strategy.
 
-**Returns:** [NodeConfiguration](nodeconfiguration.md)
+**Returns:** *[NodeConfiguration](nodeconfiguration.md)*
+
 A node configuration from the strategy.
 
 ___
-<a id="getusablenodes"></a>
 
-### `<Protected>` getUsableNodes
+### `Protected` getUsableNodes
 
-▸ **getUsableNodes**(): [NodeConfiguration](nodeconfiguration.md)[]
+▸ **getUsableNodes**(): *[NodeConfiguration](nodeconfiguration.md)[]*
+
+*Inherited from [BaseWalkStrategy](basewalkstrategy.md).[getUsableNodes](basewalkstrategy.md#protected-getusablenodes)*
 
 Get the list of nodes that have not been blacklisted.
 
-**Returns:** [NodeConfiguration](nodeconfiguration.md)[]
+**Returns:** *[NodeConfiguration](nodeconfiguration.md)[]*
+
 The non blacklisted nodes.
 
 ___
-<a id="next"></a>
 
 ###  next
 
-▸ **next**(): `void`
+▸ **next**(): *void*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
+
+*Overrides [BaseWalkStrategy](basewalkstrategy.md).[next](basewalkstrategy.md#abstract-next)*
 
 Move to the next node in the strategy.
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="totalusable"></a>
 
 ###  totalUsable
 
-▸ **totalUsable**(): `number`
+▸ **totalUsable**(): *number*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
+
+*Inherited from [BaseWalkStrategy](basewalkstrategy.md).[totalUsable](basewalkstrategy.md#totalusable)*
 
 The total number of nodes configured for the strategy.
 
-**Returns:** `number`
+**Returns:** *number*
+
 The total number of nodes.
 
 ___
-

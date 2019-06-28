@@ -1,4 +1,6 @@
-[@iota/client-load-balancer](../README.md) > [BaseWalkStrategy](../classes/basewalkstrategy.md)
+> ## [@iota/client-load-balancer](../README.md)
+
+[BaseWalkStrategy](basewalkstrategy.md) /
 
 # Class: BaseWalkStrategy
 
@@ -6,111 +8,111 @@ Common features for the node strategies.
 
 ## Hierarchy
 
-**BaseWalkStrategy**
+* **BaseWalkStrategy**
 
-↳  [LinearWalkStrategy](linearwalkstrategy.md)
+  * [LinearWalkStrategy](linearwalkstrategy.md)
 
-↳  [RandomWalkStrategy](randomwalkstrategy.md)
+  * [RandomWalkStrategy](randomwalkstrategy.md)
 
 ## Implements
 
 * [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)
 
-## Index
+### Index
 
-### Constructors
+#### Constructors
 
 * [constructor](basewalkstrategy.md#constructor)
 
-### Methods
+#### Methods
 
 * [blacklist](basewalkstrategy.md#blacklist)
-* [current](basewalkstrategy.md#current)
-* [getUsableNodes](basewalkstrategy.md#getusablenodes)
-* [next](basewalkstrategy.md#next)
+* [current](basewalkstrategy.md#abstract-current)
+* [getUsableNodes](basewalkstrategy.md#protected-getusablenodes)
+* [next](basewalkstrategy.md#abstract-next)
 * [totalUsable](basewalkstrategy.md#totalusable)
-
----
 
 ## Constructors
 
-<a id="constructor"></a>
-
 ###  constructor
 
-⊕ **new BaseWalkStrategy**(nodes: *[NodeConfiguration](nodeconfiguration.md)[]*, blacklistLimit?: *`undefined` \| `number`*): [BaseWalkStrategy](basewalkstrategy.md)
+\+ **new BaseWalkStrategy**(`nodes`: [NodeConfiguration](nodeconfiguration.md)[], `blacklistLimit?`: undefined | number): *[BaseWalkStrategy](basewalkstrategy.md)*
 
 Create a new instance of BaseWalkStrategy.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| nodes | [NodeConfiguration](nodeconfiguration.md)[] |  The nodes to iterate through. |
-| `Optional` blacklistLimit | `undefined` \| `number` |  The number of failures before a node is blacklisted. |
+Name | Type | Description |
+------ | ------ | ------ |
+`nodes` | [NodeConfiguration](nodeconfiguration.md)[] | The nodes to iterate through. |
+`blacklistLimit?` | undefined \| number | The number of failures before a node is blacklisted.  |
 
-**Returns:** [BaseWalkStrategy](basewalkstrategy.md)
+**Returns:** *[BaseWalkStrategy](basewalkstrategy.md)*
 
 ___
 
 ## Methods
 
-<a id="blacklist"></a>
-
 ###  blacklist
 
-▸ **blacklist**(): `void`
+▸ **blacklist**(): *void*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
 
 Blacklist the current node, so it doesn't get used again once limit is reached.
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="current"></a>
 
-### `<Abstract>` current
+### `Abstract` current
 
-▸ **current**(): [NodeConfiguration](nodeconfiguration.md)
+▸ **current**(): *[NodeConfiguration](nodeconfiguration.md)*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
 
 Get the current node from the strategy.
 
-**Returns:** [NodeConfiguration](nodeconfiguration.md)
+**Returns:** *[NodeConfiguration](nodeconfiguration.md)*
+
 A node configuration from the strategy.
 
 ___
-<a id="getusablenodes"></a>
 
-### `<Protected>` getUsableNodes
+### `Protected` getUsableNodes
 
-▸ **getUsableNodes**(): [NodeConfiguration](nodeconfiguration.md)[]
+▸ **getUsableNodes**(): *[NodeConfiguration](nodeconfiguration.md)[]*
 
 Get the list of nodes that have not been blacklisted.
 
-**Returns:** [NodeConfiguration](nodeconfiguration.md)[]
+**Returns:** *[NodeConfiguration](nodeconfiguration.md)[]*
+
 The non blacklisted nodes.
 
 ___
-<a id="next"></a>
 
-### `<Abstract>` next
+### `Abstract` next
 
-▸ **next**(): `void`
+▸ **next**(): *void*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
 
 Move to the next node in the strategy.
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="totalusable"></a>
 
 ###  totalUsable
 
-▸ **totalUsable**(): `number`
+▸ **totalUsable**(): *number*
+
+*Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
 
 The total number of nodes configured for the strategy.
 
-**Returns:** `number`
+**Returns:** *number*
+
 The total number of nodes.
 
 ___
-

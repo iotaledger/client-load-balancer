@@ -1,4 +1,6 @@
-[@iota/client-load-balancer](../README.md) > [NodeConfiguration](../classes/nodeconfiguration.md)
+> ## [@iota/client-load-balancer](../README.md)
+
+[NodeConfiguration](nodeconfiguration.md) /
 
 # Class: NodeConfiguration
 
@@ -6,65 +8,56 @@ The configuration for a single node.
 
 ## Hierarchy
 
-**NodeConfiguration**
+* **NodeConfiguration**
 
-## Index
+### Index
 
-### Properties
+#### Properties
 
-* [attachToTangle](nodeconfiguration.md#attachtotangle)
-* [depth](nodeconfiguration.md#depth)
-* [mwm](nodeconfiguration.md#mwm)
+* [attachToTangle](nodeconfiguration.md#optional-attachtotangle)
+* [depth](nodeconfiguration.md#optional-depth)
+* [mwm](nodeconfiguration.md#optional-mwm)
 * [provider](nodeconfiguration.md#provider)
-* [timeoutMs](nodeconfiguration.md#timeoutms)
-
----
+* [timeoutMs](nodeconfiguration.md#optional-timeoutms)
 
 ## Properties
 
-<a id="attachtotangle"></a>
+### `Optional` attachToTangle
 
-### `<Optional>` attachToTangle
-
-**● attachToTangle**: *`AttachToTangle`*
+● **attachToTangle**? : *`AttachToTangle`*
 
 The attach to tangle method, defaults to using main load balancer setting.
 
 ___
-<a id="depth"></a>
 
-### `<Optional>` depth
+### `Optional` depth
 
-**● depth**: *`undefined` \| `number`*
+● **depth**? : *undefined | number*
 
 The depth used for attaching.
 
 ___
-<a id="mwm"></a>
 
-### `<Optional>` mwm
+### `Optional` mwm
 
-**● mwm**: *`undefined` \| `number`*
+● **mwm**? : *undefined | number*
 
 The minimum weight magnitude used for attaching.
 
 ___
-<a id="provider"></a>
 
 ###  provider
 
-**● provider**: *`string`*
+● **provider**: *string*
 
 The provider url for the node.
 
 ___
-<a id="timeoutms"></a>
 
-### `<Optional>` timeoutMs
+### `Optional` timeoutMs
 
-**● timeoutMs**: *`undefined` \| `number`*
+● **timeoutMs**? : *undefined | number*
 
 Timeout for this specific node, defaults to using the main load balancer setting.
 
 ___
-

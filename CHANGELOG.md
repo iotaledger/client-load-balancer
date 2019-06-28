@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.0
+
+* Initial public release
+
 ## v0.1.4
 
 * Pass attachToTangle into composeAPICore
