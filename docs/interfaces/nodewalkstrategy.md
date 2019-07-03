@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](../README.md)
+> **[@iota/client-load-balancer](../README.md)**
 
 [NodeWalkStrategy](nodewalkstrategy.md) /
 
@@ -68,5 +68,3 @@ The total number of usable nodes for the strategy.
 **Returns:** *number*
 
 The total number of usable nodes.
-
-___

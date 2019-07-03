@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](../README.md)
+> **[@iota/client-load-balancer](../README.md)**
 
 [RandomWalkStrategy](randomwalkstrategy.md) /
 
@@ -48,8 +48,6 @@ Name | Type | Description |
 `blacklistLimit?` | undefined \| number | The number of failures before a node is blacklisted.  |
 
 **Returns:** *[RandomWalkStrategy](randomwalkstrategy.md)*
-
-___
 
 ## Methods
 
@@ -124,5 +122,3 @@ The total number of nodes configured for the strategy.
 **Returns:** *number*
 
 The total number of nodes.
-
-___

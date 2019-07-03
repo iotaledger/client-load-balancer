@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](../README.md)
+> **[@iota/client-load-balancer](../README.md)**
 
 [Mam](mam.md) /
 
@@ -196,11 +196,11 @@ Listen for new message on the channel.
 
 **Parameters:**
 
-■` channel`: *`MamSubscribedChannel`*
+▪ **channel**: *`MamSubscribedChannel`*
 
 The channel to listen on.
 
-■` callback`: *function*
+▪ **callback**: *function*
 
 The callback to receive any messages,
 
@@ -234,5 +234,3 @@ Name | Type | Description |
 **Returns:** *`MamState`*
 
 Updated state object to be used with future actions.
-
-___

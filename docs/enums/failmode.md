@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](../README.md)
+> **[@iota/client-load-balancer](../README.md)**
 
 [FailMode](failmode.md) /
 
@@ -17,7 +17,7 @@ Fail modes for the load balancer.
 
 ###  all
 
-● **all**: = "all"
+• **all**: = "all"
 
 Try all nodes until one succeeds, on all failing throws combined exception.
 
@@ -25,8 +25,6 @@ ___
 
 ###  single
 
-● **single**: = "single"
+• **single**: = "single"
 
 Try single node only, failure throws exception.
-
-___
