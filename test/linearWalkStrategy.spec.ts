@@ -22,6 +22,6 @@ test("current() and next() iterate through nodes", () => {
     ]);
 
     expect(obj.current().provider).toBe("https://localhost1");
-    obj.next();
+    obj.next(true);
     expect(obj.current().provider).toBe("https://localhost2");
 });

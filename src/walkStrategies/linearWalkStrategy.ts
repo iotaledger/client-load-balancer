@@ -30,8 +30,9 @@ export class LinearWalkStrategy extends BaseWalkStrategy {
 
     /**
      * Move to the next node in the strategy.
+     * @param retainOrder Retain the ordering if resetting the list.
      */
-    public next(): void {
+    public next(retainOrder: boolean): void {
         this._currentIndex = (this._currentIndex + 1) % this.getUsableNodes().length;
     }
 }

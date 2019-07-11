@@ -23,7 +23,7 @@ test("current() and next() randomly pick nodes", () => {
 
     for (let i = 0; i < 200; i++) {
         visited[obj.current().provider] = true;
-        obj.next();
+        obj.next(true);
     }
 
     for (let i = 0; i < nodes.length; i++) {

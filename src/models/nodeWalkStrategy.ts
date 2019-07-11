@@ -18,8 +18,9 @@ export interface NodeWalkStrategy {
 
     /**
      * Move to the next node in the strategy.
+     * @param retainOrder Retain the ordering if resetting the list.
      */
-    next(): void;
+    next(retainOrder: boolean): void;
 
     /**
      * Blacklist the current node, so it doesn't get used again.

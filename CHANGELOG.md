@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.1
+
+* RandomWalkStrategy retains order when calling next from exhausted list after error
+
 ## v1.0.0
 
 * Initial public release

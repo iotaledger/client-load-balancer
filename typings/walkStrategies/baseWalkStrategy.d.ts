@@ -39,8 +39,9 @@ export declare abstract class BaseWalkStrategy implements NodeWalkStrategy {
     abstract current(): NodeConfiguration;
     /**
      * Move to the next node in the strategy.
+     * @param retainOrder Retain the ordering if resetting the list.
      */
-    abstract next(): void;
+    abstract next(retainOrder: boolean): void;
     /**
      * Blacklist the current node, so it doesn't get used again once limit is reached.
      */

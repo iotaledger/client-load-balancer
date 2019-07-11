@@ -53,7 +53,7 @@ export async function loadBalancer(
             tryNextNode = false;
             if (settings.successMode === SuccessMode.next) {
                 // Walk to the next node in the strategy
-                settings.nodeWalkStrategy.next();
+                settings.nodeWalkStrategy.next(false);
             }
         } catch (err) {
             settings.nodeWalkStrategy.blacklist();
@@ -80,7 +80,7 @@ export async function loadBalancer(
                 }
 
                 // Walk to the next node in the strategy
-                settings.nodeWalkStrategy.next();
+                settings.nodeWalkStrategy.next(true);
             }
         }
     } while (tryNextNode);

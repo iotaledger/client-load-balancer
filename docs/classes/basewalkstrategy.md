@@ -93,11 +93,17 @@ ___
 
 ### `Abstract` next
 
-▸ **next**(): *void*
+▸ **next**(`retainOrder`: boolean): *void*
 
 *Implementation of [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
 
 Move to the next node in the strategy.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`retainOrder` | boolean | Retain the ordering if resetting the list.  |
 
 **Returns:** *void*
 

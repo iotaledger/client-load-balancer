@@ -15,8 +15,9 @@ class DummyWalkStrategy extends BaseWalkStrategy {
 
     /**
      * Move to the next node in the strategy.
+     * @param retainOrder Retain the ordering if resetting the list.
      */
-    public next(): void {
+    public next(retainOrder: boolean): void {
     }
 }
 

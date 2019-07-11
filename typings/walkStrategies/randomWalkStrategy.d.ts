@@ -6,8 +6,14 @@ import { BaseWalkStrategy } from "./baseWalkStrategy";
 export declare class RandomWalkStrategy extends BaseWalkStrategy {
     /**
      * The remaining nodes to randomly pick from.
+     * @internal
      */
     private _remainingNodes;
+    /**
+     * The current random ordering.
+     * @internal
+     */
+    private _randomNodes;
     /**
      * Create a new instance of RandomWalkStategy.
      * @param nodes The nodes to randomly pick from.
@@ -21,10 +27,12 @@ export declare class RandomWalkStrategy extends BaseWalkStrategy {
     current(): NodeConfiguration;
     /**
      * Move to the next node in the strategy.
+     * @param retainOrder Retain the ordering if resetting the list.
      */
-    next(): void;
+    next(retainOrder: boolean): void;
     /**
      * Populate the remaining array by randomizing the nodes.
+     * @internal
      * @private
      */
     private populateRemaining;

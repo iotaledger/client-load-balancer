@@ -7,8 +7,15 @@ import { BaseWalkStrategy } from "./baseWalkStrategy";
 export class RandomWalkStrategy extends BaseWalkStrategy {
     /**
      * The remaining nodes to randomly pick from.
+     * @internal
      */
     private _remainingNodes: NodeConfiguration[];
+
+    /**
+     * The current random ordering.
+     * @internal
+     */
+    private _randomNodes: NodeConfiguration[];
 
     /**
      * Create a new instance of RandomWalkStategy.
@@ -18,6 +25,7 @@ export class RandomWalkStrategy extends BaseWalkStrategy {
     constructor(nodes: NodeConfiguration[], blacklistLimit?: number) {
         super(nodes, blacklistLimit);
         this._remainingNodes = [];
+        this._randomNodes = [];
         this.populateRemaining();
     }
 
@@ -31,16 +39,22 @@ export class RandomWalkStrategy extends BaseWalkStrategy {
 
     /**
      * Move to the next node in the strategy.
+     * @param retainOrder Retain the ordering if resetting the list.
      */
-    public next(): void {
+    public next(retainOrder: boolean): void {
         this._remainingNodes.shift();
         if (this._remainingNodes.length === 0) {
-            this.populateRemaining();
+            if (retainOrder) {
+                this._remainingNodes = this._randomNodes.slice();
+            } else {
+                this.populateRemaining();
+            }
         }
     }
 
     /**
      * Populate the remaining array by randomizing the nodes.
+     * @internal
      * @private
      */
     private populateRemaining(): void {
@@ -50,5 +64,6 @@ export class RandomWalkStrategy extends BaseWalkStrategy {
             const j = Math.floor(Math.random() * (i + 1));
             [this._remainingNodes[i], this._remainingNodes[j]] = [this._remainingNodes[j], this._remainingNodes[i]];
         }
+        this._randomNodes = this._remainingNodes.slice();
     }
 }

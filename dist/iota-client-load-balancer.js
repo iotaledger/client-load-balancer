@@ -147,7 +147,7 @@
                         tryNextNode = false;
                         if (settings.successMode === exports.SuccessMode.next) {
                             // Walk to the next node in the strategy
-                            settings.nodeWalkStrategy.next();
+                            settings.nodeWalkStrategy.next(false);
                         }
                         return [3 /*break*/, 8];
                     case 7:
@@ -172,7 +172,7 @@
                                 throw new Error("All nodes failed\n   " + errorList.map(function (e) { return e.message; }).join("\n   "));
                             }
                             // Walk to the next node in the strategy
-                            settings.nodeWalkStrategy.next();
+                            settings.nodeWalkStrategy.next(true);
                         }
                         return [3 /*break*/, 8];
                     case 8:
@@ -573,8 +573,9 @@
         };
         /**
          * Move to the next node in the strategy.
+         * @param retainOrder Retain the ordering if resetting the list.
          */
-        LinearWalkStrategy.prototype.next = function () {
+        LinearWalkStrategy.prototype.next = function (retainOrder) {
             this._currentIndex = (this._currentIndex + 1) % this.getUsableNodes().length;
         };
         return LinearWalkStrategy;
@@ -593,6 +594,7 @@
         function RandomWalkStrategy(nodes, blacklistLimit) {
             var _this = _super.call(this, nodes, blacklistLimit) || this;
             _this._remainingNodes = [];
+            _this._randomNodes = [];
             _this.populateRemaining();
             return _this;
         }
@@ -605,15 +607,22 @@
         };
         /**
          * Move to the next node in the strategy.
+         * @param retainOrder Retain the ordering if resetting the list.
          */
-        RandomWalkStrategy.prototype.next = function () {
+        RandomWalkStrategy.prototype.next = function (retainOrder) {
             this._remainingNodes.shift();
             if (this._remainingNodes.length === 0) {
-                this.populateRemaining();
+                if (retainOrder) {
+                    this._remainingNodes = this._randomNodes.slice();
+                }
+                else {
+                    this.populateRemaining();
+                }
             }
         };
         /**
          * Populate the remaining array by randomizing the nodes.
+         * @internal
          * @private
          */
         RandomWalkStrategy.prototype.populateRemaining = function () {
@@ -624,6 +633,7 @@
                 var j = Math.floor(Math.random() * (i + 1));
                 _a = [this._remainingNodes[j], this._remainingNodes[i]], this._remainingNodes[i] = _a[0], this._remainingNodes[j] = _a[1];
             }
+            this._randomNodes = this._remainingNodes.slice();
         };
         return RandomWalkStrategy;
     }(BaseWalkStrategy));

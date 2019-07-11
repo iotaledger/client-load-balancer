@@ -21,6 +21,7 @@ export declare class LinearWalkStrategy extends BaseWalkStrategy {
     current(): NodeConfiguration;
     /**
      * Move to the next node in the strategy.
+     * @param retainOrder Retain the ordering if resetting the list.
      */
-    next(): void;
+    next(retainOrder: boolean): void;
 }
