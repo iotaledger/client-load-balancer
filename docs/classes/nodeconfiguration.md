@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](../README.md)
+> **[@iota/client-load-balancer](../README.md)**
 
 [NodeConfiguration](nodeconfiguration.md) /
 
@@ -24,7 +24,7 @@ The configuration for a single node.
 
 ### `Optional` attachToTangle
 
-● **attachToTangle**? : *`AttachToTangle`*
+• **attachToTangle**? : *`AttachToTangle`*
 
 The attach to tangle method, defaults to using main load balancer setting.
 
@@ -32,7 +32,7 @@ ___
 
 ### `Optional` depth
 
-● **depth**? : *undefined | number*
+• **depth**? : *undefined | number*
 
 The depth used for attaching.
 
@@ -40,7 +40,7 @@ ___
 
 ### `Optional` mwm
 
-● **mwm**? : *undefined | number*
+• **mwm**? : *undefined | number*
 
 The minimum weight magnitude used for attaching.
 
@@ -48,7 +48,7 @@ ___
 
 ###  provider
 
-● **provider**: *string*
+• **provider**: *string*
 
 The provider url for the node.
 
@@ -56,8 +56,6 @@ ___
 
 ### `Optional` timeoutMs
 
-● **timeoutMs**? : *undefined | number*
+• **timeoutMs**? : *undefined | number*
 
 Timeout for this specific node, defaults to using the main load balancer setting.
-
-___

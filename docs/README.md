@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](README.md)
+> **[@iota/client-load-balancer](README.md)**
 
 ### Index
 
@@ -41,5 +41,3 @@ Name | Type | Description |
 **Returns:** *`API`*
 
 The api.
-
-___

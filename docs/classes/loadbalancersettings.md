@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](../README.md)
+> **[@iota/client-load-balancer](../README.md)**
 
 [LoadBalancerSettings](loadbalancersettings.md) /
 
@@ -32,7 +32,7 @@ Settings to use for the load balancer.
 
 ### `Optional` attachToTangle
 
-● **attachToTangle**? : *`AttachToTangle`*
+• **attachToTangle**? : *`AttachToTangle`*
 
 The attach to tangle method.
 
@@ -40,7 +40,7 @@ ___
 
 ### `Optional` depth
 
-● **depth**? : *undefined | number*
+• **depth**? : *undefined | number*
 
 The depth used for attaching, defaults to 3.
 
@@ -48,7 +48,7 @@ ___
 
 ### `Optional` failMode
 
-● **failMode**? : *[FailMode](../enums/failmode.md)*
+• **failMode**? : *[FailMode](../enums/failmode.md)*
 
 How should we use the nodes on a failed request, defaults to all.
 
@@ -56,7 +56,7 @@ ___
 
 ### `Optional` mwm
 
-● **mwm**? : *undefined | number*
+• **mwm**? : *undefined | number*
 
 The minimum weight magnitude used for attaching, defaults to 9.
 
@@ -64,7 +64,7 @@ ___
 
 ###  nodeWalkStrategy
 
-● **nodeWalkStrategy**: *[NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
+• **nodeWalkStrategy**: *[NodeWalkStrategy](../interfaces/nodewalkstrategy.md)*
 
 The strategy to use for node selection.
 
@@ -72,7 +72,7 @@ ___
 
 ### `Optional` snapshotAware
 
-● **snapshotAware**? : *undefined | false | true*
+• **snapshotAware**? : *undefined | false | true*
 
 Should be look for missing data from snapshots.
 
@@ -80,7 +80,7 @@ ___
 
 ### `Optional` successMode
 
-● **successMode**? : *[SuccessMode](../enums/successmode.md)*
+• **successMode**? : *[SuccessMode](../enums/successmode.md)*
 
 How should we use the nodes on a successful request, defaults to next.
 
@@ -88,11 +88,9 @@ ___
 
 ### `Optional` timeoutMs
 
-● **timeoutMs**? : *undefined | number*
+• **timeoutMs**? : *undefined | number*
 
 A timeout to check if a node is non responsive, if not supplied will use default fetch timout.
-
-___
 
 ## Methods
 
@@ -126,5 +124,3 @@ Name | Type | Description |
 `node` | [NodeConfiguration](nodeconfiguration.md) | The node configuration that was tried.  |
 
 **Returns:** *void*
-
-___

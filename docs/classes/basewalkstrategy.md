@@ -1,4 +1,4 @@
-> ## [@iota/client-load-balancer](../README.md)
+> **[@iota/client-load-balancer](../README.md)**
 
 [BaseWalkStrategy](basewalkstrategy.md) /
 
@@ -48,8 +48,6 @@ Name | Type | Description |
 `blacklistLimit?` | undefined \| number | The number of failures before a node is blacklisted.  |
 
 **Returns:** *[BaseWalkStrategy](basewalkstrategy.md)*
-
-___
 
 ## Methods
 
@@ -120,5 +118,3 @@ The total number of nodes configured for the strategy.
 **Returns:** *number*
 
 The total number of nodes.
-
-___
