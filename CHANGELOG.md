@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.2
+
+* Removed MAM as the new mam.js package can now be used with standard composeAPI
+
 ## v1.0.1
 
 * RandomWalkStrategy retains order when calling next from exhausted list after error

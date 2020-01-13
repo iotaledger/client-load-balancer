@@ -21,7 +21,6 @@ export default {
     external: [
         "@iota/core",
         "@iota/validators",
-        "@iota/mam",
         "bluebird"
     ],
     output: {
@@ -32,7 +31,6 @@ export default {
         globals: {
             "@iota/core": 'core',
             "@iota/validators": 'validators',
-            "@iota/mam": 'MamCore',
             "bluebird": 'Bluebird'
         }
     },

@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@iota/core'), require('@iota/validators'), require('@iota/mam'), require('bluebird')) :
-    typeof define === 'function' && define.amd ? define(['exports', '@iota/core', '@iota/validators', '@iota/mam', 'bluebird'], factory) :
-    (global = global || self, factory(global.IotaClientLoadBalancer = {}, global.core, global.validators, global.MamCore, global.Bluebird));
-}(this, function (exports, core, validators, MamCore, Bluebird) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@iota/core'), require('@iota/validators')) :
+    typeof define === 'function' && define.amd ? define(['exports', '@iota/core', '@iota/validators'], factory) :
+    (global = global || self, factory(global.IotaClientLoadBalancer = {}, global.core, global.validators));
+}(this, function (exports, core, validators) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -305,170 +305,6 @@
     }
 
     /**
-     * Wrapper for Mam with load balancing
-     */
-    var Mam = /** @class */ (function () {
-        function Mam() {
-        }
-        /**
-         * Initialisation function which returns a state object
-         * @param settings Settings for the load balancer.
-         * @param seed The seed to initialise with.
-         * @param security The security level, defaults to 2.
-         * @returns The mam state.
-         */
-        Mam.init = function (settings, seed, security) {
-            if (security === void 0) { security = 2; }
-            if (!settings) {
-                throw new Error("You must provider settings");
-            }
-            if (!settings.nodeWalkStrategy) {
-                throw new Error("The nodeWalkStrategy field must be provided");
-            }
-            settings.mwm = settings.mwm || 9;
-            settings.depth = settings.depth || 3;
-            settings.successMode = settings.successMode || exports.SuccessMode.next;
-            settings.failMode = settings.failMode || exports.FailMode.all;
-            Mam.loadBalancerSettings = settings;
-            return MamCore.init({ provider: "" }, seed, security);
-        };
-        /**
-         * Change the mode for the mam state.
-         * @param state The current mam state.
-         * @param mode [public/private/restricted].
-         * @param sidekey, required for restricted mode.
-         * @returns Updated state object to be used with future actions.
-         */
-        Mam.changeMode = function (state, mode, sidekey) {
-            return MamCore.changeMode(state, mode, sidekey);
-        };
-        /**
-         * Get the root from the mam state.
-         * @param state The mam state.
-         * @returns The root.
-         */
-        Mam.getRoot = function (state) {
-            return MamCore.getRoot(state);
-        };
-        /**
-         * Add a subscription to your state object
-         * @param state The state object to add the subscription to.
-         * @param channelRoot The root of the channel to subscribe to.
-         * @param channelMode Can be `public`, `private` or `restricted`.
-         * @param channelKey Optional, the key of the channel to subscribe to.
-         * @returns Updated state object to be used with future actions.
-         */
-        Mam.subscribe = function (state, channelRoot, channelMode, channelKey) {
-            return MamCore.subscribe(state, channelRoot, channelMode, channelKey);
-        };
-        /**
-         * Listen for new message on the channel.
-         * @param channel The channel to listen on.
-         * @param callback The callback to receive any messages,
-         */
-        Mam.listen = function (channel, callback) {
-            return MamCore.listen(channel, callback);
-        };
-        /**
-         * Creates a MAM message payload from a state object.
-         * @param state The current mam state.
-         * @param message Tryte encoded string.
-         * @returns An object containing the payload and updated state.
-         */
-        Mam.create = function (state, message) {
-            return MamCore.create(state, message);
-        };
-        /**
-         * Decode a message.
-         * @param payload The payload of the message.
-         * @param sideKey The sideKey used in the message.
-         * @param root The root used for the message.
-         * @returns The decoded payload.
-         */
-        Mam.decode = function (payload, sideKey, root) {
-            return MamCore.decode(payload, sideKey, root);
-        };
-        /**
-         * Fetch the messages asynchronously.
-         * @param root The root key to use.
-         * @param mode The mode of the channel.
-         * @param sideKey The sideKey used in the messages, only required for restricted.
-         * @param callback Optional callback to receive each payload.
-         * @param limit Limit the number of messages that are fetched.
-         * @returns The nextRoot and the messages if no callback was supplied, or an Error.
-         */
-        Mam.fetch = function (root, mode, sideKey, callback, limit) {
-            return __awaiter(this, void 0, Promise, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, loadBalancer(Mam.loadBalancerSettings, function (node) {
-                            MamCore.setIOTA(node.provider);
-                            MamCore.setAttachToTangle(node.attachToTangle || Mam.loadBalancerSettings.attachToTangle);
-                        }, function () { return new Bluebird(function (resolve, reject) {
-                            MamCore.fetch(root, mode, sideKey, callback, limit)
-                                .then(resolve)
-                                .catch(reject);
-                        }); })];
-                });
-            });
-        };
-        /**
-         * Fetch a single message asynchronously.
-         * @param root The root key to use.
-         * @param mode The mode of the channel.
-         * @param sideKey The sideKey used in the messages.
-         * @returns The nextRoot and the payload, or an Error.
-         */
-        Mam.fetchSingle = function (root, mode, sideKey) {
-            return __awaiter(this, void 0, Promise, function () {
-                var response;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, Mam.fetch(root, mode, sideKey, undefined, 1)];
-                        case 1:
-                            response = _a.sent();
-                            return [2 /*return*/, response instanceof Error ? response : {
-                                    payload: response.messages && response.messages.length === 1 ? response.messages[0] : undefined,
-                                    nextRoot: response.nextRoot
-                                }];
-                    }
-                });
-            });
-        };
-        /**
-         * Attach the mam trytes to the tangle.
-         * @param trytes The trytes to attach.
-         * @param root The root to attach them to.
-         * @param depth The depth to attach them with, defaults to 3.
-         * @param mwm The minimum weight magnitude to attach with, defaults to 9 for devnet, 14 required for mainnet.
-         * @param tag Trytes to tag the message with.
-         * @returns The transaction objects.
-         */
-        Mam.attach = function (trytes, root, depth, mwm, tag) {
-            return __awaiter(this, void 0, Promise, function () {
-                var _a, prepareTransfers, sendTrytes, response;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            _a = composeAPI(Mam.loadBalancerSettings), prepareTransfers = _a.prepareTransfers, sendTrytes = _a.sendTrytes;
-                            return [4 /*yield*/, prepareTransfers("9".repeat(81), [
-                                    {
-                                        address: root,
-                                        value: 0,
-                                        message: trytes,
-                                        tag: tag
-                                    }
-                                ])];
-                        case 1:
-                            response = _b.sent();
-                            return [2 /*return*/, sendTrytes(response, depth || 0, mwm || 0)];
-                    }
-                });
-            });
-        };
-        return Mam;
-    }());
-
-    /**
      * Settings to use for the load balancer.
      */
     var LoadBalancerSettings = /** @class */ (function () {
@@ -640,7 +476,6 @@
 
     exports.LinearWalkStrategy = LinearWalkStrategy;
     exports.LoadBalancerSettings = LoadBalancerSettings;
-    exports.Mam = Mam;
     exports.NodeConfiguration = NodeConfiguration;
     exports.RandomWalkStrategy = RandomWalkStrategy;
     exports.composeAPI = composeAPI;

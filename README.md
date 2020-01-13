@@ -1,10 +1,10 @@
 # IOTA JavaScript Client Load Balancer
 
-A utility library for use with [iota.js](https://github.com/iotaledger/iota.js) and [mam.client.js](https://github.com/iotaledger/mam.client.js) which will perform node operations using a list of nodes instead of just a single provider.
+A utility library for use with [iota.js](https://github.com/iotaledger/iota.js) and [mam.js](https://github.com/iotaledger/mam.js) which will perform node operations using a list of nodes instead of just a single provider.
 
 Features include:
 
-* API Compatible with iota.js and mam.client.js apart from initialization, so your code does not need to change. Supports both async and callback modes.
+* API Compatible with iota.js and mam.js apart from initialization, so your code does not need to change. Supports both async and callback modes.
 
 * Snapshot aware option which tries alternate nodes if getTrytes returns all 9s for result.
 

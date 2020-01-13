@@ -1,5 +1,4 @@
 export * from "./composeAPI";
-export * from "./mam";
 export * from "./models/failMode";
 export * from "./models/loadBalancerSettings";
 export * from "./models/nodeConfiguration";

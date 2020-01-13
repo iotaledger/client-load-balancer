@@ -1,7 +1,7 @@
 {
     "name": "@iota/client-load-balancer",
     "description": "IOTA JavaScript Client Load Balancer",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "keywords": [
         "iota",
         "client",
@@ -17,8 +17,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@iota/core": "^1.0.0-beta.16",
-        "@iota/mam": "github:iotaledger/mam.client.js",
+        "@iota/core": "^1.0.0-beta.21",
         "@iota/validators": "^1.0.0-beta.16",
         "bluebird": "^3.5.5"
     },

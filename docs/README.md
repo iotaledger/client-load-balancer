@@ -12,7 +12,6 @@
 * [BaseWalkStrategy](classes/basewalkstrategy.md)
 * [LinearWalkStrategy](classes/linearwalkstrategy.md)
 * [LoadBalancerSettings](classes/loadbalancersettings.md)
-* [Mam](classes/mam.md)
 * [NodeConfiguration](classes/nodeconfiguration.md)
 * [RandomWalkStrategy](classes/randomwalkstrategy.md)
 
