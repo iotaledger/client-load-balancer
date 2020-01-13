@@ -1,14 +1,12 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[SuccessMode](successmode.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [SuccessMode](successmode.md)
 
 # Enumeration: SuccessMode
 
 Success modes for the load balancer.
 
-### Index
+## Index
 
-#### Enumeration members
+### Enumeration members
 
 * [keep](successmode.md#keep)
 * [next](successmode.md#next)

@@ -1,6 +1,4 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[BaseWalkStrategy](basewalkstrategy.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [BaseWalkStrategy](basewalkstrategy.md)
 
 # Class: BaseWalkStrategy
 
@@ -10,21 +8,21 @@ Common features for the node strategies.
 
 * **BaseWalkStrategy**
 
-  * [LinearWalkStrategy](linearwalkstrategy.md)
+  ↳ [LinearWalkStrategy](linearwalkstrategy.md)
 
-  * [RandomWalkStrategy](randomwalkstrategy.md)
+  ↳ [RandomWalkStrategy](randomwalkstrategy.md)
 
 ## Implements
 
 * [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)
 
-### Index
+## Index
 
-#### Constructors
+### Constructors
 
 * [constructor](basewalkstrategy.md#constructor)
 
-#### Methods
+### Methods
 
 * [blacklist](basewalkstrategy.md#blacklist)
 * [current](basewalkstrategy.md#abstract-current)
@@ -45,7 +43,7 @@ Create a new instance of BaseWalkStrategy.
 Name | Type | Description |
 ------ | ------ | ------ |
 `nodes` | [NodeConfiguration](nodeconfiguration.md)[] | The nodes to iterate through. |
-`blacklistLimit?` | undefined \| number | The number of failures before a node is blacklisted.  |
+`blacklistLimit?` | undefined &#124; number | The number of failures before a node is blacklisted.  |
 
 **Returns:** *[BaseWalkStrategy](basewalkstrategy.md)*
 

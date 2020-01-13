@@ -1,6 +1,4 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[LoadBalancerSettings](loadbalancersettings.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [LoadBalancerSettings](loadbalancersettings.md)
 
 # Class: LoadBalancerSettings
 
@@ -10,9 +8,9 @@ Settings to use for the load balancer.
 
 * **LoadBalancerSettings**
 
-### Index
+## Index
 
-#### Properties
+### Properties
 
 * [attachToTangle](loadbalancersettings.md#optional-attachtotangle)
 * [depth](loadbalancersettings.md#optional-depth)
@@ -23,7 +21,7 @@ Settings to use for the load balancer.
 * [successMode](loadbalancersettings.md#optional-successmode)
 * [timeoutMs](loadbalancersettings.md#optional-timeoutms)
 
-#### Methods
+### Methods
 
 * [failNodeCallback](loadbalancersettings.md#optional-failnodecallback)
 * [tryNodeCallback](loadbalancersettings.md#optional-trynodecallback)
@@ -32,7 +30,7 @@ Settings to use for the load balancer.
 
 ### `Optional` attachToTangle
 
-• **attachToTangle**? : *`AttachToTangle`*
+• **attachToTangle**? : *AttachToTangle*
 
 The attach to tangle method.
 
@@ -96,7 +94,7 @@ A timeout to check if a node is non responsive, if not supplied will use default
 
 ### `Optional` failNodeCallback
 
-▸ **failNodeCallback**(`node`: [NodeConfiguration](nodeconfiguration.md), `error`: `Error`): *void*
+▸ **failNodeCallback**(`node`: [NodeConfiguration](nodeconfiguration.md), `error`: Error): *void*
 
 Callback which is triggered when a node fails.
 
@@ -105,7 +103,7 @@ Callback which is triggered when a node fails.
 Name | Type | Description |
 ------ | ------ | ------ |
 `node` | [NodeConfiguration](nodeconfiguration.md) | The node configuration that failed. |
-`error` | `Error` | The error the node failed with.  |
+`error` | Error | The error the node failed with.  |
 
 **Returns:** *void*
 

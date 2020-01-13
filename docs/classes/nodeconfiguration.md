@@ -1,6 +1,4 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[NodeConfiguration](nodeconfiguration.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [NodeConfiguration](nodeconfiguration.md)
 
 # Class: NodeConfiguration
 
@@ -10,9 +8,9 @@ The configuration for a single node.
 
 * **NodeConfiguration**
 
-### Index
+## Index
 
-#### Properties
+### Properties
 
 * [attachToTangle](nodeconfiguration.md#optional-attachtotangle)
 * [depth](nodeconfiguration.md#optional-depth)
@@ -24,7 +22,7 @@ The configuration for a single node.
 
 ### `Optional` attachToTangle
 
-• **attachToTangle**? : *`AttachToTangle`*
+• **attachToTangle**? : *AttachToTangle*
 
 The attach to tangle method, defaults to using main load balancer setting.
 

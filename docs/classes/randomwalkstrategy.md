@@ -1,6 +1,4 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[RandomWalkStrategy](randomwalkstrategy.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [RandomWalkStrategy](randomwalkstrategy.md)
 
 # Class: RandomWalkStrategy
 
@@ -10,19 +8,19 @@ Node choice strategy which randomly picks from the list of nodes.
 
 * [BaseWalkStrategy](basewalkstrategy.md)
 
-  * **RandomWalkStrategy**
+  ↳ **RandomWalkStrategy**
 
 ## Implements
 
 * [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)
 
-### Index
+## Index
 
-#### Constructors
+### Constructors
 
 * [constructor](randomwalkstrategy.md#constructor)
 
-#### Methods
+### Methods
 
 * [blacklist](randomwalkstrategy.md#blacklist)
 * [current](randomwalkstrategy.md#current)
@@ -45,7 +43,7 @@ Create a new instance of RandomWalkStategy.
 Name | Type | Description |
 ------ | ------ | ------ |
 `nodes` | [NodeConfiguration](nodeconfiguration.md)[] | The nodes to randomly pick from. |
-`blacklistLimit?` | undefined \| number | The number of failures before a node is blacklisted.  |
+`blacklistLimit?` | undefined &#124; number | The number of failures before a node is blacklisted.  |
 
 **Returns:** *[RandomWalkStrategy](randomwalkstrategy.md)*
 

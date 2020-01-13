@@ -7,4 +7,3 @@ The examples contain the following items:
 A simple usage of the load balancer with composeAPI.
 
 See [./simple](./simple) for more details.
-

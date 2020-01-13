@@ -1,14 +1,12 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[FailMode](failmode.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [FailMode](failmode.md)
 
 # Enumeration: FailMode
 
 Fail modes for the load balancer.
 
-### Index
+## Index
 
-#### Enumeration members
+### Enumeration members
 
 * [all](failmode.md#all)
 * [single](failmode.md#single)

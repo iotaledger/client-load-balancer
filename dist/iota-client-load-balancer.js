@@ -2,7 +2,7 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@iota/core'), require('@iota/validators')) :
     typeof define === 'function' && define.amd ? define(['exports', '@iota/core', '@iota/validators'], factory) :
     (global = global || self, factory(global.IotaClientLoadBalancer = {}, global.core, global.validators));
-}(this, function (exports, core, validators) { 'use strict';
+}(this, (function (exports, core, validators) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -482,4 +482,4 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

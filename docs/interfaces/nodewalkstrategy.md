@@ -1,6 +1,4 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[NodeWalkStrategy](nodewalkstrategy.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [NodeWalkStrategy](nodewalkstrategy.md)
 
 # Interface: NodeWalkStrategy
 
@@ -16,9 +14,9 @@ A strategy for choosing nodes.
 * [LinearWalkStrategy](../classes/linearwalkstrategy.md)
 * [RandomWalkStrategy](../classes/randomwalkstrategy.md)
 
-### Index
+## Index
 
-#### Methods
+### Methods
 
 * [blacklist](nodewalkstrategy.md#blacklist)
 * [current](nodewalkstrategy.md#current)

@@ -1,6 +1,4 @@
-> **[@iota/client-load-balancer](../README.md)**
-
-[LinearWalkStrategy](linearwalkstrategy.md) /
+[@iota/client-load-balancer - v1.0.2](../README.md) › [LinearWalkStrategy](linearwalkstrategy.md)
 
 # Class: LinearWalkStrategy
 
@@ -10,19 +8,19 @@ Node choice strategy which just iterates through the list of nodes.
 
 * [BaseWalkStrategy](basewalkstrategy.md)
 
-  * **LinearWalkStrategy**
+  ↳ **LinearWalkStrategy**
 
 ## Implements
 
 * [NodeWalkStrategy](../interfaces/nodewalkstrategy.md)
 
-### Index
+## Index
 
-#### Constructors
+### Constructors
 
 * [constructor](linearwalkstrategy.md#constructor)
 
-#### Methods
+### Methods
 
 * [blacklist](linearwalkstrategy.md#blacklist)
 * [current](linearwalkstrategy.md#current)
@@ -45,7 +43,7 @@ Create a new instance of LinearWalkStrategy.
 Name | Type | Description |
 ------ | ------ | ------ |
 `nodes` | [NodeConfiguration](nodeconfiguration.md)[] | The nodes to randomly pick from. |
-`blacklistLimit?` | undefined \| number | The number of failures before a node is blacklisted.  |
+`blacklistLimit?` | undefined &#124; number | The number of failures before a node is blacklisted.  |
 
 **Returns:** *[LinearWalkStrategy](linearwalkstrategy.md)*
 

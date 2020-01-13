@@ -1,13 +1,15 @@
-> **[@iota/client-load-balancer](README.md)**
+[@iota/client-load-balancer - v1.0.2](README.md)
 
-### Index
+# @iota/client-load-balancer - v1.0.2
 
-#### Enumerations
+## Index
+
+### Enumerations
 
 * [FailMode](enums/failmode.md)
 * [SuccessMode](enums/successmode.md)
 
-#### Classes
+### Classes
 
 * [BaseWalkStrategy](classes/basewalkstrategy.md)
 * [LinearWalkStrategy](classes/linearwalkstrategy.md)
@@ -15,11 +17,11 @@
 * [NodeConfiguration](classes/nodeconfiguration.md)
 * [RandomWalkStrategy](classes/randomwalkstrategy.md)
 
-#### Interfaces
+### Interfaces
 
 * [NodeWalkStrategy](interfaces/nodewalkstrategy.md)
 
-#### Functions
+### Functions
 
 * [composeAPI](README.md#composeapi)
 
@@ -27,7 +29,7 @@
 
 ###  composeAPI
 
-▸ **composeAPI**(`settings`: [LoadBalancerSettings](classes/loadbalancersettings.md)): *`API`*
+▸ **composeAPI**(`settings`: [LoadBalancerSettings](classes/loadbalancersettings.md)): *API*
 
 Create a new instance of the API wrapped with load balancing support.
 
@@ -37,6 +39,6 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `settings` | [LoadBalancerSettings](classes/loadbalancersettings.md) | The load balancer settings. |
 
-**Returns:** *`API`*
+**Returns:** *API*
 
 The api.
