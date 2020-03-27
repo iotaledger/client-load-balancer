@@ -1,10 +1,30 @@
-# IOTA JavaScript Client Load Balancer
+<h2 align="center">A load balancer for connecting to IOTA nodes</h2>
 
-A utility library for use with [iota.js](https://github.com/iotaledger/iota.js) and [mam.client.js](https://github.com/iotaledger/mam.client.js) which will perform node operations using a list of nodes instead of just a single provider.
+<p align="center">
+  <a href="https://discord.iota.org/" style="text-decoration:none;"><img src="https://img.shields.io/badge/Discord-9cf.svg?logo=discord" alt="Discord"></a>
+    <a href="https://iota.stackexchange.com/" style="text-decoration:none;"><img src="https://img.shields.io/badge/StackExchange-9cf.svg?logo=stackexchange" alt="StackExchange"></a>
+    <a href="https://github.com/iotaledger/client-load-balancer/blob/master/LICENSE" style="text-decoration:none;"><img src="https://img.shields.io/github/license/iotaledger/client-load-balancer.svg" alt="MIT license"></a>
+</p>
+      
+<p align="center">
+  <a href="#about">About</a> ◈
+  <a href="#prerequisites">Prerequisites</a> ◈
+  <a href="#installation">Installation</a> ◈
+  <a href="#getting-started">Getting started</a> ◈
+  <a href="#api-reference">API reference</a> ◈
+  <a href="#supporting-the-project">Supporting the project</a> ◈
+  <a href="#joining-the-discussion">Joining the discussion</a> 
+</p>
+
+---
+
+## About
+
+The Client Load Balancer is a utility package for sending commands to a list of nodes instead of just a single provider.
+
+This package is compatible with the [IOTA JavaScript client library](https://github.com/iotaledger/iota.js) and [mam.client.js](https://github.com/iotaledger/mam.client.js). 
 
 Features include:
-
-* API Compatible with iota.js and mam.client.js apart from initialization, so your code does not need to change. Supports both async and callback modes.
 
 * Snapshot aware option which tries alternate nodes if getTrytes returns all 9s for result.
 
@@ -39,21 +59,34 @@ Features include:
   * AttachToTangle
   * TimeoutMs
 
-## Installing
+This is beta software, so there may be performance and stability issues.
+Please report any issues in our [issue tracker](https://github.com/iotaledger/client-load-balancer/issues/new).
 
-Install this package using the following commands:
+## Prerequisites
 
-```shell
-npm install iotaledger/client-load-balancer
+To use the Client Load Balancer in your own applications, you need [Node.js](https://nodejs.org/en/download/) installed on your device.
+
+To check if you have Node.js installed, run the following command:
+
+```bash
+node -v
 ```
 
-or
+If Node.js is installed, you should see the version that's installed.
 
-```shell
-yarn add iotaledger/client-load-balancer
-```
+## Installation
 
-## Example Usage
+To install this package, use one of the following commands:
+
+
+- `npm install iotaledger/client-load-balancer`
+
+
+- `yarn add iotaledger/client-load-balancer`
+
+## Getting started
+
+To jump in now, see the following code sample:
 
 ```js
 const { composeAPI, FailMode, RandomWalkStrategy, SuccessMode } = require('@iota/client-load-balancer');
@@ -105,12 +138,14 @@ App Version: 1.5.6-RELEASE
 
 ## API Reference
 
-See the API reference for the library [./docs/](./docs/README.md).
+See the [JavaScript API reference](./docs/README.md).
 
-## Examples
+## Supporting the project
 
-More examples of the load balancer usage can be found in the [./examples/](./examples/README.md) folder.
+If you want to contribute, consider submitting a [bug report](https://github.com/iotaledger/client-load-balancer/issues/new), [feature request](https://github.com/iotaledger/client-load-balancer/issues/new) or a [pull request](https://github.com/iotaledger/client-load-balancer/pulls/).
 
-## License
+See our [contributing guidelines](.github/CONTRIBUTING.md) for more information.
 
-MIT License - Copyright (c) 2019 IOTA Stiftung
+## Joining the discussion
+
+If you want to get involved in the community, need help with getting set up, have any issues or just want to discuss IOTA, Distributed Registry Technology (DRT), and IoT with other people, feel free to join our [Discord](https://discord.iota.org/).
