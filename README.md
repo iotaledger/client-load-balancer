@@ -173,7 +173,6 @@ If you want methods like `sendTrytes` to use the values from the configuration j
 await iota.sendTrytes(trytes, undefined, undefined);
 ```
 
-
 ## API Reference
 
 See the [JavaScript API reference](./docs/README.md).
