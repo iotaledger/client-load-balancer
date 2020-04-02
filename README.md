@@ -169,7 +169,7 @@ await iota.sendTrytes(trytes, 3, 9);
 
 If you want methods like `sendTrytes` to use the values from the configuration just pass `undefined` instead, in `JavaScript` you can skip the parameters altogether but `TypeScript` will require some values, hence `undefined`.
 
- In this case of `undefined` parameters the code will first look at the configuration for the node that is currently using, if that does not provide values it uses the load balancer settings. If they are not provided the defaults are `depth=3` and `mwm=9`
+ In this case of `undefined` parameters the code will first look at the configuration for the node that it is currently using, if that does not provide values it uses the load balancer settings. If they are not provided the defaults are `depth=3` and `mwm=9`
 
 ```js
 await iota.sendTrytes(trytes, undefined, undefined);
