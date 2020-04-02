@@ -136,6 +136,44 @@ App Name: IRI Testnet
 App Version: 1.5.6-RELEASE
 ```
 
+## MWM and Depth
+
+The `mwm` and `depth` parameters can be set at multiple levels within the configuration. You can specify them at a node level, but they are optional.
+
+```js
+{
+    provider: "https://altnodes.devnet.iota.org:443",
+    depth?: 3,
+    mwm?: 9
+}
+```
+If you don't specify them for each node you can set them at the top level load balancer settings.
+
+```js
+const api = composeAPI({
+    nodeWalkStrategy: ...,
+    depth?: 3,
+    mwm?: 9
+});
+```
+
+Or you can just provide them when calling the regular methods that require them.
+
+```js
+const iota = composeAPI(loadBalancerSettings);
+const trytes = await iota.prepareTransfers(seed, transfers, options);
+await iota.sendTrytes(trytes, 3, 9);
+```
+
+If you want methods like `sendTrytes` to use the values from the configuration just pass `undefined` instead, in `JavaScript` you can skip the parameters altogether but `TypeScript` will require some values, hence `undefined`.
+
+ In this case of `undefined` parameters the code will first look at the configuration for the node that is currently using, if that does not provide values it uses the load balancer settings. If they are not provided the defaults are `depth=3` and `mwm=9`
+
+```js
+await iota.sendTrytes(trytes, undefined, undefined);
+```
+
+
 ## API Reference
 
 See the [JavaScript API reference](./docs/README.md).
