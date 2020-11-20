@@ -208,7 +208,12 @@
                     if (originalCallbackParam) {
                         p[method.length - 1] = undefined;
                     }
-                    return [2 /*return*/, loadBalancer(settings, function (node) { return api.setSettings({ provider: node.provider, attachToTangle: node.attachToTangle || settings.attachToTangle }); }, function (node) {
+                    return [2 /*return*/, loadBalancer(settings, function (node) { return api.setSettings({
+                            provider: node.provider,
+                            attachToTangle: node.attachToTangle || settings.attachToTangle,
+                            user: node.user || settings.user,
+                            password: node.password || settings.password
+                        }); }, function (node) {
                             // Apply the default depth and mwm to methods that use them if they have not been supplied
                             if (methodName === "promoteTransaction" ||
                                 methodName === "replayBundle" ||

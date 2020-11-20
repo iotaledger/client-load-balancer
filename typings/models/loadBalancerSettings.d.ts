@@ -40,6 +40,14 @@ export declare class LoadBalancerSettings {
      */
     attachToTangle?: AttachToTangle;
     /**
+     * The username for the provider.
+     */
+    user?: string;
+    /**
+     * The password for the provider.
+     */
+    password?: string;
+    /**
      * Callback which is triggered when a new node is about to be used.
      * @param node The node configuration that was tried.
      */

@@ -23,4 +23,12 @@ export declare class NodeConfiguration {
      * The attach to tangle method, defaults to using main load balancer setting.
      */
     attachToTangle?: AttachToTangle;
+    /**
+     * The username for the provider.
+     */
+    user?: string;
+    /**
+     * The password for the provider.
+     */
+    password?: string;
 }
