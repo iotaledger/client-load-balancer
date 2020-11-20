@@ -67,7 +67,7 @@ export async function loadBalancer(
                 throw err;
             } else if (settings.failMode === FailMode.all) {
                 // Fail mode is try all until one succeeds
-                errorList.push(err.message ? err : { message: err});
+                errorList.push(err.message ? err : { message: err });
 
                 // Try to use the next node if the current one errored
                 triedCount++;
@@ -109,7 +109,12 @@ export function wrapMethodCallbackOrAsync(settings: LoadBalancerSettings, api: A
 
         return loadBalancer(
             settings,
-            (node) => api.setSettings({ provider: node.provider, attachToTangle: node.attachToTangle || settings.attachToTangle }),
+            (node) => api.setSettings({
+                provider: node.provider,
+                attachToTangle: node.attachToTangle || settings.attachToTangle,
+                user: node.user || settings.user,
+                password: node.password || settings.password
+            }),
             (node) => {
                 // Apply the default depth and mwm to methods that use them if they have not been supplied
                 if (methodName === "promoteTransaction" ||

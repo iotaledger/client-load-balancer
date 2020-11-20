@@ -39,6 +39,16 @@ export class LoadBalancerSettings {
     public depth?: number;
 
     /**
+     * The username for the provider.
+     */
+    public user?: string;
+
+    /**
+     * The password for the provider.
+     */
+    public password?: string;
+
+    /**
      * A timeout to check if a node is non responsive, if not supplied will use default fetch timout.
      */
     public timeoutMs?: number;
