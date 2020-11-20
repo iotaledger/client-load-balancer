@@ -1,8 +1,30 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@iota/core'), require('@iota/validators'), require('@iota/mam'), require('bluebird')) :
     typeof define === 'function' && define.amd ? define(['exports', '@iota/core', '@iota/validators', '@iota/mam', 'bluebird'], factory) :
-    (global = global || self, factory(global.IotaClientLoadBalancer = {}, global.core, global.validators, global.MamCore, global.Bluebird));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.IotaClientLoadBalancer = {}, global.core, global.validators, global.MamCore, global.Bluebird));
 }(this, (function (exports, core, validators, MamCore, Bluebird) { 'use strict';
+
+    function _interopNamespace(e) {
+        if (e && e.__esModule) return e;
+        var n = Object.create(null);
+        if (e) {
+            Object.keys(e).forEach(function (k) {
+                if (k !== 'default') {
+                    var d = Object.getOwnPropertyDescriptor(e, k);
+                    Object.defineProperty(n, k, d.get ? d : {
+                        enumerable: true,
+                        get: function () {
+                            return e[k];
+                        }
+                    });
+                }
+            });
+        }
+        n['default'] = e;
+        return Object.freeze(n);
+    }
+
+    var Bluebird__namespace = /*#__PURE__*/_interopNamespace(Bluebird);
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -282,7 +304,6 @@
         api.getInclusionStates = wrapMethodCallbackOrAsync(settings, api, api.getInclusionStates, "getInclusionStates");
         api.getNeighbors = wrapMethodCallbackOrAsync(settings, api, api.getNeighbors, "getNeighbors");
         api.getNodeInfo = wrapMethodCallbackOrAsync(settings, api, api.getNodeInfo, "getNodeInfo");
-        api.getTips = wrapMethodCallbackOrAsync(settings, api, api.getTips, "getTips");
         api.getTransactionsToApprove = wrapMethodCallbackOrAsync(settings, api, api.getTransactionsToApprove, "getTransactionsToApprove");
         api.getTrytes = wrapMethodCallbackOrAsync(settings, api, api.getTrytes, "getTrytes");
         api.interruptAttachingToTangle = wrapMethodCallbackOrAsync(settings, api, api.interruptAttachingToTangle, "interruptAttachingToTangle");
@@ -292,7 +313,6 @@
         api.getAccountData = wrapMethodCallbackOrAsync(settings, api, api.getAccountData, "getAccountData");
         api.getBundle = wrapMethodCallbackOrAsync(settings, api, api.getBundle, "getBundle");
         api.getBundlesFromAddresses = wrapMethodCallbackOrAsync(settings, api, api.getBundlesFromAddresses, "getBundlesFromAddresses");
-        api.getLatestInclusion = wrapMethodCallbackOrAsync(settings, api, api.getLatestInclusion, "getLatestInclusion");
         api.getNewAddress = wrapMethodCallbackOrAsync(settings, api, api.getNewAddress, "getNewAddress");
         api.getTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.getTransactionObjects, "getTransactionObjects");
         api.findTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.findTransactionObjects, "findTransactionObjects");
@@ -408,7 +428,7 @@
                     return [2 /*return*/, loadBalancer(Mam.loadBalancerSettings, function (node) {
                             MamCore.setIOTA(node.provider);
                             MamCore.setAttachToTangle(node.attachToTangle || Mam.loadBalancerSettings.attachToTangle);
-                        }, function () { return new Bluebird(function (resolve, reject) {
+                        }, function () { return new Bluebird__namespace(function (resolve, reject) {
                             MamCore.fetch(root, mode, sideKey, callback, limit)
                                 .then(resolve)
                                 .catch(reject);
