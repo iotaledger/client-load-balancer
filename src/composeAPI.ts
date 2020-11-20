@@ -32,7 +32,6 @@ export function composeAPI(settings: LoadBalancerSettings): API {
     api.getInclusionStates = wrapMethodCallbackOrAsync(settings, api, api.getInclusionStates, "getInclusionStates");
     api.getNeighbors = wrapMethodCallbackOrAsync(settings, api, api.getNeighbors, "getNeighbors");
     api.getNodeInfo = wrapMethodCallbackOrAsync(settings, api, api.getNodeInfo, "getNodeInfo");
-    api.getTips = wrapMethodCallbackOrAsync(settings, api, api.getTips, "getTips");
     api.getTransactionsToApprove = wrapMethodCallbackOrAsync(settings, api, api.getTransactionsToApprove, "getTransactionsToApprove");
     api.getTrytes = wrapMethodCallbackOrAsync(settings, api, api.getTrytes, "getTrytes");
     api.interruptAttachingToTangle = wrapMethodCallbackOrAsync(settings, api, api.interruptAttachingToTangle, "interruptAttachingToTangle");
@@ -42,7 +41,6 @@ export function composeAPI(settings: LoadBalancerSettings): API {
     api.getAccountData = wrapMethodCallbackOrAsync(settings, api, api.getAccountData, "getAccountData");
     api.getBundle = wrapMethodCallbackOrAsync(settings, api, api.getBundle, "getBundle");
     api.getBundlesFromAddresses = wrapMethodCallbackOrAsync(settings, api, api.getBundlesFromAddresses, "getBundlesFromAddresses");
-    api.getLatestInclusion = wrapMethodCallbackOrAsync(settings, api, api.getLatestInclusion, "getLatestInclusion");
     api.getNewAddress = wrapMethodCallbackOrAsync(settings, api, api.getNewAddress, "getNewAddress");
     api.getTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.getTransactionObjects, "getTransactionObjects");
     api.findTransactionObjects = wrapMethodCallbackOrAsync(settings, api, api.findTransactionObjects, "findTransactionObjects");
